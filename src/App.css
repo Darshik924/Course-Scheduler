@@ -1,38 +1,184 @@
-.App {
-  text-align: center;
+body{
+    background-color: rgb(0, 183, 255);
+}
+.nav{
+    position:absolute;
+    width:100%;
+    top:0;
+    left:0;
+    height:45px;
+    font-size: 20px;
+    color:rgb(5, 180, 125);
+    background-color: rgb(59, 41, 59);
+    display:flex;
+}
+.navop{
+    display:flex;
+    justify-content: left;
+    margin-left: 30px;
+    gap:30px;
+    width:1250px;
+}
+.home{
+    text-decoration: none;
+    color:yellow; 
+}
+.home:hover{
+    color:red;
+    transition-duration: 0.5s;
+}
+.search{
+    display:flex;
+    justify-content: right;
+    font-weight: bold;
+    gap:30px;
+}
+.btn{
+    background-color: blue;
+    color:bisque;
+    height: 30px;
+}
+#t{
+    height: 30px;
+    width:100px;
+    border: 2.5px solid yellow
+}
+.btn:hover{
+    cursor:pointer;
+}
+.h:hover{
+    cursor:pointer;
+    border:2px solid yellow;
+    transition-duration: 0.5s;
+    height:25px;
+    color:red;
+}
+.ab:hover{
+    cursor:pointer;
+    border:2px solid yellow;
+    transition-duration: 0.5s;
+    height:25px;
+    color:red;
+}
+.mode:hover{
+    cursor:pointer;
+    border:2px solid yellow;
+    transition-duration: 0.5s;
+    height:25px;
+    color:red;
+}
+.startHead{
+    display:flex;
+    justify-content: center;
+    color:black;
+    font-size: 40px;
+    background: url("./image.jpg");
+    width:100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height:400px;
+    text-decoration: underline;
+
+}
+.st-btn{
+    display:flex;
+    justify-content: center;
+    font-size: 30px;
+}
+.btn2{
+    background-color: black;
+    color:whitesmoke;
+    height:36px;
+    font-weight: bold;
+}
+.btn2:hover{
+    cursor: pointer;
+    color: yellow;
+    transition-duration: 0.5s;
+}
+.button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.courselist{
+    display: flex;
+    justify-content: center;
+}
+.submit{
+    background-color: black;
+    color:white;
+    font-weight: bold;
+}
+.submit:hover{
+    cursor: pointer;
+    color: yellow;
+    transition-duration: 0.5s;
+}
+.input{
+    border:3px solid black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.cdisp{
+    display:flex;
+    flex-wrap: wrap;
+    margin-left: 350px;
+    margin-right: 325px;
+    gap:10px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.calen{
+    height:500px;
+}
+.calendar-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.calen{
+    display:flex;
+    flex-direction: column;
+}
+.day{
+    border:2px solid black;
+    height:55px;
+    text-align: center;
+    color:red;
+    background-color: rgb(204, 240, 240);
+}
+.btn3{
+    background-color: black;
+    color:whitesmoke;
+    height:36px;
+    font-weight: bold;
+    align-self: center;
+}
+.b1{
+    display:flex;
+    justify-content: center;
+}
+.CALEN{
+    background-color: white;
+}
+.rbc-calendar {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.d{
+    padding: "10px";
+    margin: "5px 0";
+    background-color: "#4f46e5";
+    color: "white";
+    border-radius: "8px";
+}
+.d:hover{
+    cursor:grab;
+    opacity: 0.5;
+}
+.e{
+    width: 200px;
+    background: #f1f5f9;
+    padding: 10px;
+    border-radius: 8px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
