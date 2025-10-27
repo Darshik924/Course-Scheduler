@@ -25,9 +25,11 @@ export default function Main({courses}){
   const [events,setEvents]=useState([]);
   const Courses=courses.map((c,i)=>({id:i+1,title:c}));
 
-  const handleDrop=(course)=>{
+  const handleDrop=(course,slotInfo)=>{
     const newEvent={
       title:course.title,
+      start: slotInfo.start,
+      end: slotInfo.end,
     };
     setEvents((prev)=>{
     const newEvents = [];
@@ -35,13 +37,16 @@ export default function Main({courses}){
       newEvents.push(prev[i]);
     }
     newEvents.push(newEvent);
-    return newEvents;})
+    return newEvents;
+    })
   };
 
   const DroppableCalendar=({events})=>{
     const [{canDrop,isOver},drop]=useDrop(()=>({
       accept:ItemTypes.COURSE,
-      drop:(item,monitor)=>{},
+      drop:(item, monitor)=>{
+        console.log(item.course)
+      },
       collect:(monitor)=>({
         isOver:!!monitor.isOver(),
         canDrop:!!monitor.canDrop(),
@@ -49,10 +54,10 @@ export default function Main({courses}){
     }));
 
     const handleSelectSlot=useCallback(
-      ()=>{
+      ({start,end})=>{
         const lastDrag=window.lastDraggedCourse;
         if(lastDrag){
-          handleDrop(lastDrag);
+          handleDrop(lastDrag,{start,end});
           window.lastDraggedCourse=null;
         }else{
           alert("Drag a course first, then select a time slot!");
@@ -71,6 +76,7 @@ export default function Main({courses}){
           endAccessor="end"
           onSelectSlot={handleSelectSlot}
           style={{
+            backgroundColor:"#7bbdff",
             height: 500,
             border:canDrop ? "2px dashed #4f46e5":"none",
           }}
@@ -103,6 +109,11 @@ export default function Main({courses}){
       collect:(monitor)=>({
         isDragging:!!monitor.isDragging(),
       }),
+      end:(item) => {
+        if(item){ 
+          window.lastDraggedCourse = item.course;
+        }
+      },
     }));
     return (
       <div
