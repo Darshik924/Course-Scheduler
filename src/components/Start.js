@@ -7,7 +7,7 @@ export default function Start({onSubmit}) {
     useEffect(()=>{
         const intervalId=setInterval(()=>{
             setColor(prevColor=>(prevColor==='red'?'blue':'red'));
-        },1300);
+        },1000);
         return ()=>clearInterval(intervalId);
     },[]);
     const handleStartClick=()=>{
