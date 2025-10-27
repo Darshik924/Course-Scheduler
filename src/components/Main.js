@@ -25,42 +25,39 @@ export default function Main({courses}){
   const [events,setEvents]=useState([]);
   const Courses=courses.map((c,i)=>({id:i+1,title:c}));
 
-  const handleDrop=(course,slotInfo)=>{
-    const newEvent={
+  const handleDrop=(course,sInfo)=>{
+    const newevent={
       title:course.title,
-      start: slotInfo.start,
-      end: slotInfo.end,
+      start:sInfo.start,
+      end:sInfo.end,
     };
     setEvents((prev)=>{
-    const newEvents = [];
-    for (let i=0;i<prev.length;i++) {
+    const newEvents=[];
+    for(let i=0;i<prev.length;i++){
       newEvents.push(prev[i]);
     }
-    newEvents.push(newEvent);
+    newEvents.push(newevent);
     return newEvents;
     })
   };
 
-  const DroppableCalendar=({events})=>{
+  const DropCalen=({events})=>{
     const [{canDrop,isOver},drop]=useDrop(()=>({
       accept:ItemTypes.COURSE,
-      drop:(item, monitor)=>{
-        console.log(item.course)
-      },
       collect:(monitor)=>({
         isOver:!!monitor.isOver(),
         canDrop:!!monitor.canDrop(),
       }),
     }));
 
-    const handleSelectSlot=useCallback(
+    const handleSlSelect=useCallback(
       ({start,end})=>{
         const lastDrag=window.lastDraggedCourse;
         if(lastDrag){
           handleDrop(lastDrag,{start,end});
           window.lastDraggedCourse=null;
         }else{
-          alert("Drag a course first, then select a time slot!");
+          alert("Drag a course first and then select a time slot!");
         }
       },
       []
@@ -74,7 +71,7 @@ export default function Main({courses}){
           events={events}
           startAccessor="start"
           endAccessor="end"
-          onSelectSlot={handleSelectSlot}
+          onSelectSlot={handleSlSelect}
           style={{
             backgroundColor:"#7bbdff",
             height: 500,
@@ -102,16 +99,16 @@ export default function Main({courses}){
     await supabase.auth.signOut();
   }
 
-  const TrackableCourseCard=({course})=>{
+  const CourseCard=({course})=>{
     const [{isDragging},drag]=useDrag(()=>({
       type:ItemTypes.COURSE,
       item:{course},
       collect:(monitor)=>({
         isDragging:!!monitor.isDragging(),
       }),
-      end:(item) => {
+      end:(item)=>{
         if(item){ 
-          window.lastDraggedCourse = item.course;
+          window.lastDraggedCourse=item.course;
         }
       },
     }));
@@ -150,12 +147,12 @@ export default function Main({courses}){
                   }}
                 >
                   {Courses.map((course)=>(
-                    <TrackableCourseCard key={course.id} course={course} />
+                    <CourseCard key={course.id} course={course} />
                   ))}
                 </div>
 
                 <div style={{flex:1}}>
-                  <DroppableCalendar events={events} />
+                  <DropCalen events={events} />
                 </div>
               </div>
             </DndProvider>
