@@ -14,7 +14,6 @@ function App() {
     setcoursesArr(courses);
     setshowMain(true);
   }
-  const [value, onChange] = useState(new Date());
 
   return (
     <div className="App">
