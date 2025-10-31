@@ -6,7 +6,7 @@ For the setup of React BigCalendar i used Google
 
 For React drag and drop logic is pretty basic i just kept googling and figuring out logic and how to write make stuff draggable and droppable 
 
-# Other References Used for this : 
+### Other References Used for this : 
 
 https://youtu.be/tgcCl52EN84?si=pDXbYe-g73cIoQHM
 for auth login
