@@ -42,10 +42,9 @@ export default function Main({courses}){
   };
 
   const DropCalen=({events})=>{
-    const [{canDrop,isOver},drop]=useDrop(()=>({
+    const [{canDrop},drop]=useDrop(()=>({
       accept:ItemTypes.COURSE,
       collect:(monitor)=>({
-        isOver:!!monitor.isOver(),
         canDrop:!!monitor.canDrop(),
       }),
     }));
